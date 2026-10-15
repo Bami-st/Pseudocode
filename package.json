@@ -1,0 +1,22 @@
+{
+  "name": "pseudocode-engineering-verification",
+  "version": "1.0.0",
+  "description": "Pseudocode engineering project demonstrating code comprehension, precise specification, independent implementation, and verification of AI-generated code.",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node part-a/run_tests.js && node part-b/run_tests.js && node part-c/run_tests.js",
+    "test:part-a": "node part-a/run_tests.js",
+    "test:part-b": "node part-b/run_tests.js",
+    "test:part-c": "node part-c/run_tests.js"
+  },
+  "keywords": [
+    "pseudocode",
+    "verification",
+    "specification",
+    "independent-implementation",
+    "ai-code-audit"
+  ],
+  "author": "Ayobami Adeniyi <adeniyiayobami73@gmail.com>",
+  "license": "MIT"
+}
