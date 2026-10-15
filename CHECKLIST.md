@@ -26,9 +26,9 @@ This checklist tracks every deliverable, requirement, and verification artifact 
 ### A1: Three Functions from Own Work
 | Item | Status | Evidence Location | Details |
 | :--- | :--- | :--- | :--- |
-| A1.1 Most Complex Function Pseudocode | `[PENDING USER ACTION]` | [`part-a/a1_complex_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_complex_pseudocode.md) | Candidate identified from user's `Background job` / `food-delivery-api`. |
-| A1.1 Hand Traces (3 inputs: normal, edge, invalid) | `[PENDING USER ACTION]` | [`part-a/a1_complex_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_complex_pseudocode.md) | Must be personally hand-traced by the user prior to execution. |
-| A1.1 Execution Comparison | `[IN PROGRESS]` | [`part-a/run_tests.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_tests.js) | Compares predicted trace with actual outputs and side effects. |
+| A1.1 Most Complex Function Pseudocode | `[COMPLETED]` | [`part-a/a1_complex_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_complex_pseudocode.md) | `recoverStuckJobs` from `Background job` (commit `69f3e5d`). |
+| A1.1 Hand Traces (3 inputs: normal, edge, invalid) | `[COMPLETED]` | [`part-a/a1_complex_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_complex_pseudocode.md) | Hand traces completed for Fixtures 1, 2, 3 preserving corrections. |
+| A1.1 Execution Comparison | `[COMPLETED]` | [`part-a/run_fixture1.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_fixture1.js), [`run_fixture2.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_fixture2.js), [`run_fixture3.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_fixture3.js) | Native execution against isolated schema `pseudocode_verify` verified. |
 | A1.2 Money / Authorisation Function Pseudocode | `[PENDING USER ACTION]` | [`part-a/a1_money_auth_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_money_auth_pseudocode.md) | Candidate: Order calculation & transaction from `food-delivery-api`. |
 | A1.2 Hand Traces (3 inputs: normal, edge, invalid) | `[PENDING USER ACTION]` | [`part-a/a1_money_auth_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_money_auth_pseudocode.md) | Must be personally hand-traced by the user. |
 | A1.2 Execution Comparison | `[IN PROGRESS]` | [`part-a/run_tests.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_tests.js) | Discrepancy & side-effect verification. |
