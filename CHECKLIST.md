@@ -15,10 +15,10 @@ This checklist tracks every deliverable, requirement, and verification artifact 
 | Fresh Git Repository initialized | `[COMPLETED]` | [`.git/`](file:///c:/Users/User/Desktop/Pseudocode/.git) | Git repo initialized, commits recorded incrementally. |
 | `.gitignore` security safeguards | `[COMPLETED]` | [`.gitignore`](file:///c:/Users/User/Desktop/Pseudocode/.gitignore) | Protects `.env`, credentials, logs, and `node_modules`. |
 | `.env.example` with zero secrets | `[COMPLETED]` | [`.env.example`](file:///c:/Users/User/Desktop/Pseudocode/.env.example) | Example environment configurations with placeholders only. |
-| Master `README.md` | `[IN PROGRESS]` | [`README.md`](file:///c:/Users/User/Desktop/Pseudocode/README.md) | Pseudocode standard, architecture, reproducibility, lessons. |
-| Defense Notes (`defense_notes.md`) | `[IN PROGRESS]` | [`defense_notes.md`](file:///c:/Users/User/Desktop/Pseudocode/defense_notes.md) | Four required defense categories prepared for user rehearsal. |
-| Draft Social / Technical Post | `[IN PROGRESS]` | [`draft_post.md`](file:///c:/Users/User/Desktop/Pseudocode/draft_post.md) | Draft technical summary of Part C discovery (not published). |
-| Fresh-Clone Reproducibility | `[IN PROGRESS]` | [`package.json`](file:///c:/Users/User/Desktop/Pseudocode/package.json) | Node.js verification scripts running test runners. |
+| Master `README.md` | `[COMPLETED]` | [`README.md`](file:///c:/Users/User/Desktop/Pseudocode/README.md) | Pseudocode standard, architecture, reproducibility, lessons. |
+| Defense Notes (`defense_notes.md`) | `[COMPLETED]` | [`defense_notes.md`](file:///c:/Users/User/Desktop/Pseudocode/defense_notes.md) | Four required defense categories prepared for user rehearsal. |
+| Draft Social / Technical Post | `[COMPLETED]` | [`draft_post.md`](file:///c:/Users/User/Desktop/Pseudocode/draft_post.md) | Draft technical summary of Part C discovery (draft only, not published). |
+| Fresh-Clone Reproducibility | `[COMPLETED]` | [`package.json`](file:///c:/Users/User/Desktop/Pseudocode/package.json) | Node.js verification scripts running test runners. |
 
 ---
 
@@ -29,20 +29,22 @@ This checklist tracks every deliverable, requirement, and verification artifact 
 | A1.1 Most Complex Function Pseudocode | `[COMPLETED]` | [`part-a/a1_complex_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_complex_pseudocode.md) | `recoverStuckJobs` from `Background job` (commit `69f3e5d`). |
 | A1.1 Hand Traces (3 inputs: normal, edge, invalid) | `[COMPLETED]` | [`part-a/a1_complex_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_complex_pseudocode.md) | Hand traces completed for Fixtures 1, 2, 3 preserving corrections. |
 | A1.1 Execution Comparison | `[COMPLETED]` | [`part-a/run_fixture1.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_fixture1.js), [`run_fixture2.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_fixture2.js), [`run_fixture3.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_fixture3.js) | Native execution against isolated schema `pseudocode_verify` verified. |
-| A1.2 Money / Authorisation Function Pseudocode | `[PENDING USER ACTION]` | [`part-a/a1_money_auth_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_money_auth_pseudocode.md) | Candidate: Order calculation & transaction from `food-delivery-api`. |
-| A1.2 Hand Traces (3 inputs: normal, edge, invalid) | `[PENDING USER ACTION]` | [`part-a/a1_money_auth_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_money_auth_pseudocode.md) | Must be personally hand-traced by the user. |
-| A1.2 Execution Comparison | `[IN PROGRESS]` | [`part-a/run_tests.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_tests.js) | Discrepancy & side-effect verification. |
-| A1.3 Error Handling Function Pseudocode | `[PENDING USER ACTION]` | [`part-a/a1_error_handling_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_error_handling_pseudocode.md) | Candidate: `failJob` with exponential backoff & jitter. |
-| A1.3 Hand Traces (3 inputs: normal, edge, invalid) | `[PENDING USER ACTION]` | [`part-a/a1_error_handling_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_error_handling_pseudocode.md) | Must be personally hand-traced by the user. |
-| A1.3 Execution Comparison | `[IN PROGRESS]` | [`part-a/run_tests.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_tests.js) | Verifies actual behavior vs predicted trace. |
+| A1.2 Money / Authorisation Function Pseudocode | `[COMPLETED]` | [`part-a/a1_money_auth_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_money_auth_pseudocode.md) | POST /orders handler from `food-delivery-api` (`index.js`). |
+| A1.2 Hand Traces (3 inputs: normal, edge, invalid) | `[COMPLETED]` | [`part-a/a1_money_auth_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_money_auth_pseudocode.md) | Guided traces completed for Fixtures 1, 2, 3 (recorded as AI-assisted). |
+| A1.2 Execution Comparison | `[COMPLETED]` | [`part-a/run_order_fixture1.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_order_fixture1.js), [`run_order_fixture2.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_order_fixture2.js), [`run_order_fixture3.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_order_fixture3.js) | Native execution against isolated `test_food_orders` schema (31/31 fields match). |
+| A1.3 Error Handling Function Pseudocode | `[COMPLETED]` | [`part-a/a1_error_handling_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_error_handling_pseudocode.md) | `failJob` from `Background job` (`src/jobs.js`) with backoff, jitter, COALESCE & CASE WHEN. |
+| A1.3 Hand Traces (3 inputs: normal, edge, invalid) | `[COMPLETED]` | [`part-a/a1_error_handling_pseudocode.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a1_error_handling_pseudocode.md) | Guided traces completed for Fixtures 1, 2, 3 (recorded as AI-assisted). |
+| A1.3 Execution Comparison | `[COMPLETED]` | [`part-a/run_failjob_fixture1.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_failjob_fixture1.js), [`run_failjob_fixture2.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_failjob_fixture2.js), [`run_failjob_fixture3.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_failjob_fixture3.js) | Native execution against isolated `pseudocode_verify.jobs` (23/23 fields match). |
 
-### A2: Three Open-Source Functions
+### A2: Three Open-Source Functions (`cors` v2.8.6)
 | Item | Status | Evidence Location | Details |
 | :--- | :--- | :--- | :--- |
-| Selection of Library & Functions (Short, Med, Diff) | `[COMPLETED]` | [`part-a/a2_library_selection.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a2_library_selection.md) | Exact version and source locations recorded. |
-| User Unaided First Drafts (No AI hints) | `[PENDING USER ACTION]` | [`part-a/a2_lib_short_draft.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a2_lib_short_draft.md) | Preserved separately before AI explanation. |
-| AI Explanation & Discrepancy Analysis | `[IN PROGRESS]` | [`part-a/a2_comparison_notes.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a2_comparison_notes.md) | Evaluates user interpretation vs AI explanation vs source truth. |
-| Corrected Pseudocode & Execution Verification | `[IN PROGRESS]` | [`part-a/a2_lib_short.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a2_lib_short.md) | 3 library files with hand traces and real test runner. |
+| Selection of Library & Functions (Short, Med, Diff) | `[COMPLETED]` | [`part-a/a2_library_selection.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a2_library_selection.md) | `cors` v2.8.6 confirmed, lines recorded. |
+| A2.1 Short (`isOriginAllowed`) Work Packet & Draft | `[PENDING USER ACTION]` | [`part-a/a2_lib_short_draft.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a2_lib_short_draft.md) | Packet prepared; awaiting unaided user pseudocode & 3 traces. |
+| A2.2 Medium (`configureOrigin`) Work Packet & Draft | `[PENDING USER ACTION]` | [`part-a/a2_lib_medium_draft.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a2_lib_medium_draft.md) | Packet prepared; awaiting unaided user pseudocode & 3 traces. |
+| A2.3 Difficult (`cors`) Work Packet & Draft | `[PENDING USER ACTION]` | [`part-a/a2_lib_difficult_draft.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a2_lib_difficult_draft.md) | Packet prepared; awaiting unaided user pseudocode & 3 traces. |
+| AI Explanations & Comparison Resolution Notes | `[IN PROGRESS]` | [`part-a/a2_comparison_notes.md`](file:///c:/Users/User/Desktop/Pseudocode/part-a/a2_comparison_notes.md) | Framework ready; pending user draft submissions. |
+| Native Execution Verification | `[IN PROGRESS]` | [`part-a/run_a2_verification.js`](file:///c:/Users/User/Desktop/Pseudocode/part-a/run_a2_verification.js) | Native test harness using installed `cors` v2.8.6. |
 
 ### A3: Planted Bug
 | Item | Status | Evidence Location | Details |

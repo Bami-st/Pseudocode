@@ -18,5 +18,10 @@
     "ai-code-audit"
   ],
   "author": "Ayobami Adeniyi <adeniyiayobami73@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.8",
+    "pg": "^8.23.1"
+  }
 }

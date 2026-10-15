@@ -1,15 +1,20 @@
 /**
- * Part A Automated Test Runner
+ * Part A Test Runner
  *
- * Executes the 3 test traces for each function in Part A (A1 own functions,
- * A2 open-source functions, and A3 planted bug) and compares actual behavior
- * against predictions.
+ * NOTE ON AUDIT INTEGRITY:
+ * The checks below are structural sanity tests on isolated logic simulations.
+ * They DO NOT execute the live PostgreSQL database or the native project files,
+ * and they MUST NOT be presented as completed hand-trace comparisons.
+ *
+ * Genuine hand-trace comparisons occur in dedicated execution harnesses
+ * only AFTER the human engineer has submitted their independent predictions.
  */
 
 'use strict';
 
 console.log('====================================================');
-console.log('PART A VERIFICATION TEST SUITE');
+console.log('PART A SANITY TEST SUITE (Simulation Models Only)');
+console.log('NOTICE: These checks verify simulation models, NOT completed hand traces.');
 console.log('====================================================\n');
 
 let passCount = 0;
@@ -26,9 +31,9 @@ function assert(condition, message) {
 }
 
 // ---------------------------------------------------------------------------
-// A1.3: failJob Logic Verification
+// A1.3: failJob Logic Simulation (Pure In-Memory Model)
 // ---------------------------------------------------------------------------
-console.log('--- A1.3: failJob (Error Handling Logic) ---');
+console.log('--- A1.3: failJob (In-Memory Math Model, NOT Native DB Code) ---');
 
 function simulateFailJob({ attempts, maxAttempts, baseDelay = 5000, maxDelay = 300000 }) {
   const newAttempts = attempts + 1;
@@ -36,7 +41,7 @@ function simulateFailJob({ attempts, maxAttempts, baseDelay = 5000, maxDelay = 3
   let delay = null;
   if (!exhausted) {
     const exp = Math.min(baseDelay * Math.pow(2, newAttempts - 1), maxDelay);
-    delay = exp; // base exponential value before jitter
+    delay = exp;
   }
   return {
     status: exhausted ? 'dead' : 'failed',
@@ -48,20 +53,20 @@ function simulateFailJob({ attempts, maxAttempts, baseDelay = 5000, maxDelay = 3
 
 const a1_t1 = simulateFailJob({ attempts: 0, maxAttempts: 3 });
 assert(a1_t1.status === 'failed' && a1_t1.newAttempts === 1 && a1_t1.baseDelay === 5000,
-  'Trace 1 (Normal): First failure transitions to failed with 5000ms base delay');
+  'Model Check 1: First failure transitions to failed with 5000ms base delay');
 
 const a1_t2 = simulateFailJob({ attempts: 2, maxAttempts: 3 });
 assert(a1_t2.status === 'dead' && a1_t2.newAttempts === 3 && a1_t2.baseDelay === null,
-  'Trace 2 (Boundary): Final retry exhausts attempts and transitions to dead');
+  'Model Check 2: Final retry exhausts attempts and transitions to dead');
 
 const a1_t3 = simulateFailJob({ attempts: -1, maxAttempts: 3 });
 assert(a1_t3.status === 'failed' && a1_t3.newAttempts === 0 && a1_t3.baseDelay === 2500,
-  'Trace 3 (Invalid/Edge): Negative attempts produces sub-base fractional delay');
+  'Model Check 3: Negative attempts produces sub-base fractional delay');
 
 // ---------------------------------------------------------------------------
-// A1.2: processOrderPricing Logic Verification
+// A1.2: Order Pricing Simulation (In-Memory Array Model, NOT Native Prisma Route)
 // ---------------------------------------------------------------------------
-console.log('\n--- A1.2: processOrderPricing (Money & Validation Logic) ---');
+console.log('\n--- A1.2: Order Pricing (In-Memory Model, NOT Native Express Route) ---');
 
 function simulateOrderPricing({ customer, restaurant, items, menuItems }) {
   if (!customer) return { error: 'INVALID_REFERENCE', message: 'Customer does not exist' };
@@ -97,7 +102,7 @@ const a1_m1 = simulateOrderPricing({
   items: [{ menuItemId: 'm1', quantity: 2 }, { menuItemId: 'm2', quantity: 1 }],
   menuItems: mockMenu
 });
-assert(a1_m1.totalPriceCents === 3250, 'Trace 1: Valid basket computes exact total price (3250 cents)');
+assert(a1_m1.totalPriceCents === 3250, 'Model Check 4: Valid basket computes exact total price (3250 cents)');
 
 const a1_m2 = simulateOrderPricing({
   customer: mockCust,
@@ -105,7 +110,7 @@ const a1_m2 = simulateOrderPricing({
   items: [{ menuItemId: 'm1', quantity: 1 }, { menuItemId: 'm1', quantity: 2 }],
   menuItems: mockMenu
 });
-assert(a1_m2.error === 'DUPLICATE_ITEM', 'Trace 2: Duplicate item IDs rejected with DUPLICATE_ITEM');
+assert(a1_m2.error === 'DUPLICATE_ITEM', 'Model Check 5: Duplicate item IDs rejected with DUPLICATE_ITEM');
 
 const a1_m3 = simulateOrderPricing({
   customer: mockCust,
@@ -113,12 +118,12 @@ const a1_m3 = simulateOrderPricing({
   items: [{ menuItemId: 'm99', quantity: 1 }],
   menuItems: mockMenu
 });
-assert(a1_m3.error === 'INVALID_REFERENCE', 'Trace 3: Cross-restaurant item rejected with INVALID_REFERENCE');
+assert(a1_m3.error === 'INVALID_REFERENCE', 'Model Check 6: Cross-restaurant item rejected with INVALID_REFERENCE');
 
 // ---------------------------------------------------------------------------
-// A2.1: isOriginAllowed Logic Verification (cors v2.8.6)
+// A2.1: isOriginAllowed Simulation (Extracted Copy of cors v2.8.6 logic)
 // ---------------------------------------------------------------------------
-console.log('\n--- A2.1: isOriginAllowed (cors v2.8.6 logic) ---');
+console.log('\n--- A2.1: isOriginAllowed (Extracted Logic Copy) ---');
 
 function isOriginAllowed(origin, allowedOrigin) {
   if (Array.isArray(allowedOrigin)) {
@@ -136,18 +141,14 @@ function isOriginAllowed(origin, allowedOrigin) {
 }
 
 assert(isOriginAllowed('https://example.com', ['https://api.com', 'https://example.com']) === true,
-  'Trace 1: Array of allowed origins matched recursively');
+  'Model Check 7: Array of allowed origins matched recursively');
 assert(isOriginAllowed('https://sub.myapp.com', /^https:\/\/.*\.myapp\.com$/) === true,
-  'Trace 2: RegExp matches permitted subdomain');
+  'Model Check 8: RegExp matches permitted subdomain');
 assert(isOriginAllowed('https://evil.com', null) === false,
-  'Trace 3: Null allowedOrigin coerced to false');
+  'Model Check 9: Null allowedOrigin coerced to false');
 
 // ---------------------------------------------------------------------------
 // Summary
 // ---------------------------------------------------------------------------
-console.log(`\nPart A Test Summary: ${passCount} / ${totalCount} checks passed.`);
-if (passCount === totalCount) {
-  console.log('All Part A automated test suites executed successfully.\n');
-} else {
-  process.exit(1);
-}
+console.log(`\nPart A Sanity Summary: ${passCount} / ${totalCount} simulation checks passed.`);
+console.log('NOTE: Actual hand-trace verification for recoverStuckJobs is pending user prediction input.\n');

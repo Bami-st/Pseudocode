@@ -1,24 +1,57 @@
 # Part A2.1: Open-Source Function (Short) — Unaided First Draft
 
-## Metadata
+## Metadata & Source Reference
 - **Target Function**: `isOriginAllowed`
 - **Library**: `cors` v2.8.6
-- **Source File**: `lib/index.js` (lines 19-34)
+- **Source Location**: `node_modules/cors/lib/index.js` (lines 19–34)
 - **Status**: PENDING UNAIDED USER SUBMISSION (Zero AI hints provided)
+
+### Necessary Supporting Definition (`lib/index.js:15-17`)
+```javascript
+function isString(s) {
+  return typeof s === 'string' || s instanceof String;
+}
+```
+
+### Exact Original Function Source (`lib/index.js:19-34`)
+```javascript
+function isOriginAllowed(origin, allowedOrigin) {
+  if (Array.isArray(allowedOrigin)) {
+    for (var i = 0; i < allowedOrigin.length; ++i) {
+      if (isOriginAllowed(origin, allowedOrigin[i])) {
+        return true;
+      }
+    }
+    return false;
+  } else if (isString(allowedOrigin)) {
+    return origin === allowedOrigin;
+  } else if (allowedOrigin instanceof RegExp) {
+    return allowedOrigin.test(origin);
+  } else {
+    return !!allowedOrigin;
+  }
+}
+```
 
 ---
 
 ## User Unaided Draft Pseudocode
-*(To be completed by the user without AI assistance or external explanation)*
+*(To be completed personally by the user without AI assistance, documentation lookup, or external explanation)*
 
 ```markdown
 FUNCTION isOriginAllowed
-INPUTS: [User to fill]
-OUTPUT: [User to fill]
-SIDE EFFECTS: [User to fill]
-FAILS WHEN: [User to fill]
+INPUTS:
+  origin: [Type and description]
+  allowedOrigin: [Type and description]
+OUTPUT:
+  [Type and description]
+SIDE EFFECTS:
+  [State mutations or NONE]
+FAILS WHEN:
+  [Failure or error conditions, if any]
 
-[Numbered steps written in plain English, present tense, identifying IF/OTHERWISE branches and loops]
+1. [Step 1]
+2. [Step 2]
 ```
 
 ---
@@ -26,16 +59,28 @@ FAILS WHEN: [User to fill]
 ## User Hand Traces (Before Execution)
 
 ### Trace 1: Normal Input
-- Input:
-- Predicted Output:
-- Predicted Side Effects:
+| Property | Value |
+| :--- | :--- |
+| `origin` | |
+| `allowedOrigin` | |
+| **Predicted Output** | |
+| **Predicted Side Effects** | |
+| **Path Traced** | |
 
 ### Trace 2: Edge Case
-- Input:
-- Predicted Output:
-- Predicted Side Effects:
+| Property | Value |
+| :--- | :--- |
+| `origin` | |
+| `allowedOrigin` | |
+| **Predicted Output** | |
+| **Predicted Side Effects** | |
+| **Path Traced** | |
 
 ### Trace 3: Invalid Input
-- Input:
-- Predicted Output:
-- Predicted Side Effects:
+| Property | Value |
+| :--- | :--- |
+| `origin` | |
+| `allowedOrigin` | |
+| **Predicted Output** | |
+| **Predicted Side Effects** | |
+| **Path Traced** | |
